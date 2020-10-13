@@ -35,7 +35,7 @@ sliderPoints.forEach((item, index) => {
 	    checkBtns();
 	    checkPoint();
 	})
-})
+});
 
 btnNext.addEventListener("click", () => {
 	const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
@@ -62,7 +62,7 @@ const setPosition = () => {
 };
 
 const checkBtns = () => {
-	(position == 0) ? btnPrev.style.display = `none` : btnPrev.style.display = `block`;
+	(position === 0) ? btnPrev.style.display = `none` : btnPrev.style.display = `block`;
 
 	(position <= -(itemsCount - slidesToShow) * itemWidth) ? btnNext.style.display = `none` : btnNext.style.display = `block`;
 };
@@ -70,7 +70,7 @@ const checkBtns = () => {
 const checkPoint = () => {
 	for (let i = 0; i < itemsCount; i++) {
 	sliderPoints[i].classList.remove("active");
-    };
+    }
 
 	sliderPoints[Math.abs(position / itemWidth)].classList.add("active");
 };
@@ -85,11 +85,6 @@ const quoteItems = document.querySelectorAll(".qslider__item");
 const quoteSliderPoints = document.querySelectorAll(".qslider__point");
 const quoteItemsCount = quoteItems.length;
 const quoteItemWidth = quoteContainer.clientWidth / slidesToShow;
-const quoteMovePosition = slidesToScroll * quoteItemWidth;
-
-// quoteItems.forEach(item => {
-// 	item.style.minWidth = `${quoteItemWidth}px`;
-// });
 
 quoteSliderPoints.forEach((item, index) => {
 	item.addEventListener("click", () => {
@@ -105,9 +100,9 @@ const setQuotePosition = () => {
 };
 
 const checkQuotePoint = () => {
-	for (let i = 0; i < itemsCount; i++) {
+	for (let i = 0; i < quoteItemsCount; i++) {
 	 quoteSliderPoints[i].classList.remove("active");
-    };
+    }
 
 	 quoteSliderPoints[Math.abs(quotePosition / quoteItemWidth)].classList.add("active");
 };
@@ -116,32 +111,18 @@ const checkQuotePoint = () => {
 //Fullscreen Background 
 const fullscreen = document.querySelector(".fullscreen");
 let url = [
-        '#00d169',
-        '#ff605f',
-        'url("../../img/intro.jpg")',
-          ];
-let numberOfUrl = url.length; 
+	'#00d169',
+	'#ff605f',
+	'url("../../img/intro.jpg")',
+];
+const numberOfUrl = url.length;
 let i = 0;
 
-let fullscreenInterval = (function() {
-   
-    
-    for (i = 0; i < numberOfUrl; i++) {
-        let img = new Image();
-        img.url = url[i];
-        img.onload = function() {
-            delete this;
-        }
-    }
-    
-    let interval = setInterval(function() {
-        if(i === numberOfUrl){
-            i = 0;
-        }
-        fullscreen.style.background = `${url[i]} no-repeat center`;
-        fullscreen.style.backgroundSize = "cover";
-        i++;
-    }, 10000);
-});
-
-fullscreenInterval();
+setInterval(() => {
+	if(i === numberOfUrl){
+		i = 0;
+	}
+	fullscreen.style.background = `${url[i]} no-repeat center`;
+	fullscreen.style.backgroundSize = "cover";
+	i++;
+}, 10000);
