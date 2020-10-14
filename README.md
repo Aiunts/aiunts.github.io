@@ -1,5 +1,5 @@
 # aiunts.github.io
 GitHub Pages
 
-1) aiunts.github.io/beetle
-2) aiunts.github.io/mogo
+1) https://aiunts.github.io/Mogo/
+2) https://aiunts.github.io/Beetle/
